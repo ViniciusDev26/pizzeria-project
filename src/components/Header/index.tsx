@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { FaShoppingCart, FaBars, FaHome, FaPizzaSlice } from 'react-icons/fa'
 
-import { HeaderContainer, HeaderMenuButton, HeaderNavbar, HeaderNavbarMobile, ListItem } from "./styles";
+import { HeaderContainer, HeaderMenuButton, HeaderNavbar, ListItem } from "./styles";
 import Link from "next/link";
 
 function Header() {
