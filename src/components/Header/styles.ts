@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type TProps = {
   active?: boolean;
+  mobileOpened?: boolean;
 }
 
 const HeaderContainer = styled.header`
@@ -28,17 +29,54 @@ const HeaderNavbar = styled.nav`
     justify-content: space-between;
     gap: 2rem;
   }
+
+  @media (max-width: 425px) {
+    display: ${(props: TProps) => props.mobileOpened ? 'block' : 'none'};
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+
+    ul {
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6rem;
+
+      li {
+        font-size: 1.5em;
+      }
+    }
+  }
 `;
 
 const ListItem = styled.li`
   color: ${(props: TProps) => props.active ? "red" : ""};
+  text-align: center;
 
   a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .5rem;    
+    gap: .5rem;
   }
 `;
 
-export { HeaderContainer, HeaderNavbar, ListItem };
+const HeaderMenuButton = styled.a`
+  display: none;
+
+  @media (max-width: 425px) {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+`
+
+export { HeaderContainer, HeaderNavbar, ListItem, HeaderMenuButton };

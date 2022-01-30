@@ -2,13 +2,14 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { FaShoppingCart, FaBars, FaHome, FaPizzaSlice } from 'react-icons/fa'
 
-import { HeaderContainer, HeaderNavbar, ListItem } from "./styles";
+import { HeaderContainer, HeaderMenuButton, HeaderNavbar, HeaderNavbarMobile, ListItem } from "./styles";
 import Link from "next/link";
 
 function Header() {
   const [homeSelected, setHomeSelected] = useState(false);
   const [menuSelected, setMenuSelected] = useState(false);
   const [aboutSelected, setAboutSelected] = useState(false);
+  const [openMenuMobile, setOpenMenuMobile] = useState(false);
   const router = useRouter();
 
   const resetSelected = () => {
@@ -19,6 +20,7 @@ function Header() {
 
   const handleSelected = (selectedState: Dispatch<SetStateAction<boolean>>) => {
     resetSelected();
+    setOpenMenuMobile(false);
     selectedState(true);
   }
 
@@ -31,7 +33,7 @@ function Header() {
     <HeaderContainer>
       <h2>Gaby&apos;s Pizza</h2>
       
-      <HeaderNavbar>
+      <HeaderNavbar mobileOpened={openMenuMobile}>
         <ul>
           <ListItem active={homeSelected} onClick={() => handleSelected(setHomeSelected)}>
             <Link href={'/'}>
@@ -63,6 +65,8 @@ function Header() {
           </ListItem>
         </ul>
       </HeaderNavbar>
+      
+      <HeaderMenuButton onClick={() => setOpenMenuMobile(!openMenuMobile)}> <FaBars size={24}/> </HeaderMenuButton>
     </HeaderContainer>
   )
 }
