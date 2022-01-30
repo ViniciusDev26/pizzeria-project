@@ -32,12 +32,13 @@ const HeaderNavbar = styled.nav`
 
   @media (max-width: 425px) {
     display: ${(props: TProps) => props.mobileOpened ? 'block' : 'none'};
+    animation: openNavbarAnimation 0.3s normal;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: black;
+    background: #020001e0;
 
     ul {
       height: 100%;
@@ -49,6 +50,15 @@ const HeaderNavbar = styled.nav`
       li {
         font-size: 1.5em;
       }
+    }
+  }
+
+  @keyframes openNavbarAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
     }
   }
 `;
@@ -76,6 +86,10 @@ const HeaderMenuButton = styled.a`
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
+
+    &:active {
+      color: red;
+    }
   }
 `
 
