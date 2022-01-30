@@ -24,6 +24,10 @@ function Header() {
     selectedState(true);
   }
 
+  const handleOpenMenuMobile = () => {
+    setOpenMenuMobile(!openMenuMobile);
+  }
+
   useEffect(() => {
     router.pathname === '/' ? setHomeSelected(true) : setHomeSelected(false);
     router.pathname === '/menu' ? setMenuSelected(true) : setMenuSelected(false);
@@ -66,7 +70,7 @@ function Header() {
         </ul>
       </HeaderNavbar>
       
-      <HeaderMenuButton onClick={() => setOpenMenuMobile(!openMenuMobile)}> <FaBars size={24}/> </HeaderMenuButton>
+      <HeaderMenuButton onClick={handleOpenMenuMobile}> <FaBars size={24}/> </HeaderMenuButton>
     </HeaderContainer>
   )
 }

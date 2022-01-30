@@ -31,8 +31,10 @@ const HeaderNavbar = styled.nav`
   }
 
   @media (max-width: 425px) {
-    display: ${(props: TProps) => props.mobileOpened ? 'block' : 'none'};
-    animation: openNavbarAnimation 0.3s normal;
+    display: block;
+    visibility: ${(props: TProps) => props.mobileOpened ? 'visible' : 'hidden'} ;
+    opacity: ${(props: TProps) => props.mobileOpened ? 1 : 0};
+    transition: visibility 0.5s, opacity 0.5s linear;
     position: absolute;
     top: 0;
     left: 0;
@@ -50,15 +52,6 @@ const HeaderNavbar = styled.nav`
       li {
         font-size: 1.5em;
       }
-    }
-  }
-
-  @keyframes openNavbarAnimation {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
 `;
