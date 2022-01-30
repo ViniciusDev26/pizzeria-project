@@ -73,6 +73,12 @@ const ListItem = styled.li`
     align-items: center;
     gap: .5rem;
   }
+
+  transition: filter .2s;
+  &:hover {
+    color: red;
+    filter: brightness(0.7);
+  }
 `;
 
 const HeaderMenuButton = styled.a`
