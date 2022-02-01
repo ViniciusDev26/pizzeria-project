@@ -32,18 +32,27 @@ const Carrousel = styled.div`
   background-size: cover;
 
   transition: background 1s;
+
   a {
     cursor: pointer;
 
     display: flex;
     align-items: center;
 
-    font-size: 2rem;
     height: 100%;
-    padding: 2rem;
+    margin: 0 1rem;
 
-    background: #02000199;
-    color: white;
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    span {
+      background: #02000199;
+      color: white;
+      border: 0;
+      border-radius: 50%;
+      padding: 1rem 1.3rem;
+    }
   }
 `;
 

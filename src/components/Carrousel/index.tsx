@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CarrouselContainer, Carrousel as CarrouselComponent, CarrouselNavItem, CarrouselNav } from "./styles"
 
 type TCarrouselProps = {
@@ -30,16 +30,24 @@ const Carrousel = ({itens}: TCarrouselProps) => {
     }
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(currentSlide === (itens.length - 1) ? 0 : (currentSlide + 1))
+    }, 5000)
+
+    return () => clearInterval(interval);
+  }, [currentSlide, itens]);
+
   return (
     <CarrouselContainer>
       <CarrouselComponent image={itens[currentSlide] ? itens[currentSlide].image : ''}>
-        <a onClick={() => handleChangeCurrentslide("previous")}> {'<'} </a>
+        <a onClick={() => handleChangeCurrentslide("previous")}> <span>{'<'}</span> </a>
         <CarrouselNav>
           {itens.map((item, index) => (
             <CarrouselNavItem active={index === currentSlide} key={item?.id} onClick={() => handleChangeCurrentslide(index.toString())}/>
           ))}
         </CarrouselNav>
-        <a onClick={() => handleChangeCurrentslide("next")}> {'>'} </a>
+        <a onClick={() => handleChangeCurrentslide("next")}> <span>{'>'}</span> </a>
       </CarrouselComponent>
     </CarrouselContainer>
   )
